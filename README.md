@@ -10,6 +10,8 @@ Autometal is a cluster-aware package manager for installing bare metal operators
    
 2. Install an Autometal registry. You can use autometal.io as the default autometal registry, or you can run your own.
 
+![AutoMetal Architecture](https://raw.githubusercontent.com/homer6/autometal/master/docs/resources/autometal_architecture.jpg)
+
 ### Installing
 
 `curl https://get.autometal.io/install.sh | sudo bash`
