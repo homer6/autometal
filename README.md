@@ -25,3 +25,7 @@ License
 ----
 MIT
 
+
+Links
+----
+https://github.com/operator-framework/awesome-operators
