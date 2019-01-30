@@ -18,7 +18,19 @@ Autometal is a cluster-aware package manager for installing bare metal operators
 
 ### Running
 
-`autometal`
+```
+sudo apt install libncurses5
+autometal
+```
+
+
+### Building
+
+```
+sudo apt install cmake libncurses5-dev
+cmake -Wno-dev .
+make -j12
+```
 
 
 License
