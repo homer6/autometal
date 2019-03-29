@@ -31,6 +31,7 @@ namespace operators{
 	void KubernetesOperator::run(){
 
 		this->installPreflight();
+		
 		this->install();
 
 	}
@@ -40,10 +41,11 @@ namespace operators{
 
 		unique_ptr<Platform> platform( Platform::createPlatform() );
 
-		Command command;
-		command.setExecutable( { "ls" } );
+		platform->installDependencies();
 
-		CommandResult result = platform->executeCommand( command );
+		CommandResult result = platform->executeCommand({
+			{ "ls" }
+		});
 
 		cout << "command stdout: " << result.stdout_output << endl;
 
@@ -52,7 +54,16 @@ namespace operators{
 
 	void KubernetesOperator::install(){
 
+		unique_ptr<Platform> platform( Platform::createPlatform() );
 
+		CommandResult result = platform->downloadFile(
+			{ "pkg.cfssl.org", "/R1.2/cfssl_linux-amd64" },
+			{
+				{ "cfssl_linux-amd64" }
+			}
+		);
+
+		cout << "download stdout: " << result.stdout_output << endl;
 
 	}
 	

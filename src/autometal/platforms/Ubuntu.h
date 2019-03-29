@@ -14,6 +14,14 @@ namespace platforms {
 				:version(version)
 			{}
 
+
+			virtual bool installDependencies();
+
+
+
+			virtual CommandResult downloadFile( const HttpPath& source_file, const FilePath& destination_file );
+
+
 			string version;
 
 	};

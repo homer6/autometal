@@ -39,7 +39,7 @@ namespace platforms {
 
 	string Linux::renderFilePath( const FilePath& file_path ){
 
-		return file_path.createPathString( "/", true );
+		return file_path.createPathString( "/" );
 
 	}
 
@@ -47,7 +47,13 @@ namespace platforms {
 
 	string Linux::renderCommand( const Command& command ){
 
-		return this->renderFilePath( command.executable );
+		string executable_path = this->renderFilePath( command.executable );
+
+		for( const string& argument : command.arguments ){
+			executable_path += " " + argument;
+		}
+
+		return executable_path;
 
 	}
 
