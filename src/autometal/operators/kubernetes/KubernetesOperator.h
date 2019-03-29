@@ -10,7 +10,12 @@ namespace operators{
 
 			KubernetesOperator();
 
-			int x;
+			void run();
+
+			void installPreflight();
+			void install();
+			void remove();
+
 
 	};
 

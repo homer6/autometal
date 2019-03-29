@@ -9,20 +9,25 @@ include_directories(
 
 set( AUTOMETAL_SOURCES
     src/autometal/operators/kubernetes/KubernetesOperator.cc
+
+    src/autometal/platforms/Platform.cc
+    src/autometal/platforms/Linux.cc
+    src/autometal/platforms/Ubuntu.cc
 )
 
 set( AUTOMETAL_LIBS
-    ncurses
+    
 )
 
 
-# AutoMetal is built with c++98 to support older kernels, such as in OEL5.11
+# AutoMetal is built with c++0x to support older kernels, such as in OEL7 (g++ 4.4)
 
 set( AUTOMETAL_COMPILE_OPTIONS
     -Wall
     -Wextra
     -O3
-    -std=c++98
+    #-std=c++98
+    -std=c++0x
     #-std=gnu++11
     #-std=c++1y
     #-std=c++17

@@ -51,6 +51,7 @@ int main (int argc, char **argv) {
         cout << command << endl;
 
         KubernetesOperator k8s_operator;
+        k8s_operator.run();
         
 
     }catch( std::exception& e ){
