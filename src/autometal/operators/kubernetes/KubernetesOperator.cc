@@ -26,6 +26,14 @@ namespace operators{
 	}	
 
 
+	FilePath KubernetesOperator::getOperatorFilePath(){
+
+		return {
+			{ "srv", "autometal", "operators", "kubernetes" }, false
+		};
+
+	};
+
 
 
 	void KubernetesOperator::run(){
@@ -56,13 +64,26 @@ namespace operators{
 
 		unique_ptr<Platform> platform( Platform::createPlatform() );
 
+		FilePath operator_filepath = this->getOperatorFilePath();
+
+		platform->executeCommand({
+			{ "mkdir" },
+			{ "-p", platform->renderFilePath(operator_filepath) }
+		});
+
 		platform->downloadExecutableFile(
 			{ "pkg.cfssl.org", "/R1.2/cfssl_linux-amd64" },
 			{ { "usr", "local", "bin", "cfssl" }, false }
 		);
+
 		platform->downloadExecutableFile(
 			{ "pkg.cfssl.org", "/R1.2/cfssljson_linux-amd64" },
 			{ { "usr", "local", "bin", "cfssljson" }, false }
+		);
+
+		platform->downloadExecutableFile(
+			{ "storage.googleapis.com", "/kubernetes-release/release/v" + this->kubernetes_version + "/bin/linux/amd64/kubectl" },
+			{ { "usr", "local", "bin", "kubectl" }, false }
 		);
 
 		//cout << "download stdout: " << result.stdout_output << endl;
