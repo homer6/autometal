@@ -14,7 +14,8 @@ namespace platforms {
 			string renderFilePath( const FilePath& file_path );
 			string renderCommand( const Command& command );
 
-			
+			CommandResult makeExecutable( const FilePath& executable_file );
+
 
 	};
 

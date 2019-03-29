@@ -20,6 +20,8 @@ namespace platforms {
 
 
 			virtual CommandResult downloadFile( const HttpPath& source_file, const FilePath& destination_file );
+			virtual CommandResult downloadExecutableFile( const HttpPath& source_file, const FilePath& destination_file );
+
 
 
 			string version;

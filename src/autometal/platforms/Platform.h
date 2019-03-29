@@ -79,6 +79,11 @@ namespace platforms {
 		virtual bool installDependencies() = 0;
 		virtual CommandResult downloadFile( const HttpPath& source_file, const FilePath& destination_file ) = 0;
 
+		//downloads and ensures that it's executable
+		virtual CommandResult downloadExecutableFile( const HttpPath& source_file, const FilePath& destination_file ) = 0;
+
+		virtual CommandResult makeExecutable( const FilePath& executable_file ) = 0;
+
 
 		virtual ~Platform() = default;
 

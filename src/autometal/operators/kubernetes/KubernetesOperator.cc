@@ -56,14 +56,16 @@ namespace operators{
 
 		unique_ptr<Platform> platform( Platform::createPlatform() );
 
-		CommandResult result = platform->downloadFile(
+		platform->downloadExecutableFile(
 			{ "pkg.cfssl.org", "/R1.2/cfssl_linux-amd64" },
-			{
-				{ "cfssl_linux-amd64" }
-			}
+			{ { "usr", "local", "bin", "cfssl" }, false }
+		);
+		platform->downloadExecutableFile(
+			{ "pkg.cfssl.org", "/R1.2/cfssljson_linux-amd64" },
+			{ { "usr", "local", "bin", "cfssljson" }, false }
 		);
 
-		cout << "download stdout: " << result.stdout_output << endl;
+		//cout << "download stdout: " << result.stdout_output << endl;
 
 	}
 	

@@ -21,7 +21,7 @@ namespace platforms {
 				{ "-y", "install", "wget" }
 			});
 
-			cout << "command stdout: " << result.stdout_output << endl;
+			//cout << "command stdout: " << result.stdout_output << endl;
 
 			return true;
 
@@ -34,6 +34,20 @@ namespace platforms {
 				{ "wget" },
 				{ "-O", this->renderFilePath(destination_file), source_file.createPathString() }
 			});
+
+			return result;
+
+		}
+
+
+		CommandResult Ubuntu::downloadExecutableFile( const HttpPath& source_file, const FilePath& destination_file ){
+
+			CommandResult result = this->executeCommand({
+				{ "wget" },
+				{ "-O", this->renderFilePath(destination_file), source_file.createPathString() }
+			});
+
+			this->makeExecutable( destination_file );
 
 			return result;
 

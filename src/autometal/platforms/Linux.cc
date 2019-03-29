@@ -58,5 +58,17 @@ namespace platforms {
 	}
 
 
+	CommandResult Linux::makeExecutable( const FilePath& executable_file ){
+
+		CommandResult result = this->executeCommand({
+			{ "chmod" },
+			{ "ugo+x", this->renderFilePath(executable_file) }
+		});
+
+		return result;
+
+	}
+
+
 }
 }
