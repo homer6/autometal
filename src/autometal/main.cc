@@ -13,8 +13,14 @@ using std::cerr;
 
 
 
-#include "autometal/operators/kubernetes/KubernetesOperator.h"
+#include "autometal/operators/KubernetesOperator.h"
 using ::autometal::operators::KubernetesOperator;
+
+#include "autometal/operators/KafkaOperator.h"
+using ::autometal::operators::KafkaOperator;
+
+#include "autometal/operators/ZookeeperOperator.h"
+using ::autometal::operators::ZookeeperOperator;
 
 
 

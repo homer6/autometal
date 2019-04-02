@@ -1,4 +1,4 @@
-#include "autometal/operators/kubernetes/KubernetesOperator.h"
+#include "autometal/operators/ZookeeperOperator.h"
 
 #include "autometal/platforms/Platform.h"
 using autometal::platforms::Platform;
@@ -18,51 +18,44 @@ using std::endl;
 namespace autometal{
 namespace operators{
 
-	KubernetesOperator::KubernetesOperator()
-	{
 
-
-
-	}	
-
-
-	FilePath KubernetesOperator::getOperatorFilePath(){
+	FilePath ZookeeperOperator::getOperatorFilePath(){
 
 		return {
-			{ "srv", "autometal", "operators", "kubernetes" }, false
+			{ "srv", "autometal", "operators", "zookeeper" }, false
 		};
 
 	}
 
-	string KubernetesOperator::getOperatorVersion(){
+	string ZookeeperOperator::getOperatorVersion(){
 
 		return "01_14_00";
 
 	}
 
-	void KubernetesOperator::installPreflight(){}
-	void KubernetesOperator::install(){
-		cout << "Installing Kubernetes" << endl;
+	void ZookeeperOperator::installPreflight(){}
+	void ZookeeperOperator::install(){
+		cout << "Installing Zookeeper" << endl;
 	}
-	void KubernetesOperator::uninstall(){
-		cout << "Uninstalling Kubernetes" << endl;
+	void ZookeeperOperator::uninstall(){
+		cout << "Uninstalling Zookeeper" << endl;
 	}
-	void KubernetesOperator::assertInstalled(){}
-	void KubernetesOperator::assertUninstalled(){}
+	void ZookeeperOperator::assertInstalled(){}
+	void ZookeeperOperator::assertUninstalled(){}
 
 
-	void KubernetesOperator::installService(){}
-	void KubernetesOperator::uninstallService(){}
-	void KubernetesOperator::assertRunning(){}
-	void KubernetesOperator::assertStopped(){}
-	void KubernetesOperator::run(){}
-	void KubernetesOperator::stop(){}
+	void ZookeeperOperator::installService(){}
+	void ZookeeperOperator::uninstallService(){}
+	void ZookeeperOperator::assertRunning(){}
+	void ZookeeperOperator::assertStopped(){}
+	void ZookeeperOperator::run(){}
+	void ZookeeperOperator::stop(){}
 
 
 
 /*
 
-	void KubernetesOperator::run(){
+	void ZookeeperOperator::run(){
 
 		this->installPreflight();
 		
@@ -71,7 +64,7 @@ namespace operators{
 	}
 	
 
-	void KubernetesOperator::installPreflight(){
+	void ZookeeperOperator::installPreflight(){
 
 		unique_ptr<Platform> platform( Platform::createPlatform() );
 
@@ -86,7 +79,7 @@ namespace operators{
 	}
 	
 
-	void KubernetesOperator::install(){
+	void ZookeeperOperator::install(){
 
 		unique_ptr<Platform> platform( Platform::createPlatform() );
 

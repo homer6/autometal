@@ -11,7 +11,9 @@ set( AUTOMETAL_SOURCES
     src/autometal/operators/Operator.cc
     src/autometal/operators/RunnableOperator.cc
 
-    src/autometal/operators/kubernetes/KubernetesOperator.cc
+    src/autometal/operators/KubernetesOperator.cc
+    src/autometal/operators/KafkaOperator.cc
+    src/autometal/operators/ZookeeperOperator.cc
 
     src/autometal/platforms/Platform.cc
     src/autometal/platforms/Linux.cc

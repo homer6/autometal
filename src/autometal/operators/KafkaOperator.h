@@ -12,11 +12,9 @@ using autometal::platforms::FilePath;
 namespace autometal{
 namespace operators{
 
-	class KubernetesOperator : public RunnableOperator{
+	class KafkaOperator : public RunnableOperator{
 
 		public:
-
-			KubernetesOperator();
 
 			void installPreflight();
 			void install();
@@ -35,9 +33,6 @@ namespace operators{
 
 			FilePath getOperatorFilePath();
 			string getOperatorVersion();
-
-			string kubernetes_version = "01_14_00";
-
 
 	};
 
