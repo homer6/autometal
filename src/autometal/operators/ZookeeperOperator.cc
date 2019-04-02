@@ -48,20 +48,42 @@ namespace operators{
 		});
 
 
+		//download and unpack zookeeper
 
-		FilePath download_filepath = operator_filepath;
-		download_filepath.append( "zookeeper-3.4.14.tar.gz" );
+			FilePath zookeeper_download_filepath = operator_filepath;
+			zookeeper_download_filepath.append( "zookeeper-3.4.14.tar.gz" );
+
+			this->getPlatform()->downloadFile(
+				{ "www-us.apache.org", "/dist/zookeeper/zookeeper-3.4.14/zookeeper-3.4.14.tar.gz" },
+				zookeeper_download_filepath
+			);
+
+			this->getPlatform()->executeCommand({
+				{ "tar" },
+				{ "-C", this->getPlatform()->renderFilePath(operator_filepath), "-xvzf", this->getPlatform()->renderFilePath(zookeeper_download_filepath) }
+			});
 
 
-		this->getPlatform()->downloadFile(
-			{ "www-us.apache.org", "/dist/zookeeper/zookeeper-3.4.14/zookeeper-3.4.14.tar.gz" },
-			download_filepath
-		);
 
-		CommandResult result = this->getPlatform()->executeCommand({
-			{ "tar" },
-			{ "-C", this->getPlatform()->renderFilePath(operator_filepath), "-xvzf", this->getPlatform()->renderFilePath(download_filepath) }
-		});
+		//download and unpack openjdk
+
+			FilePath openjdk_download_filepath = operator_filepath;
+			openjdk_download_filepath.append( "openjdk-12_linux-x64_bin.tar.gz" );
+
+			this->getPlatform()->downloadFile(
+				{ "download.java.net", "/java/GA/jdk12/GPL/openjdk-12_linux-x64_bin.tar.gz" },
+				openjdk_download_filepath
+			);
+
+			this->getPlatform()->executeCommand({
+				{ "tar" },
+				{ "-C", this->getPlatform()->renderFilePath(operator_filepath), "-xvzf", this->getPlatform()->renderFilePath(openjdk_download_filepath) }
+			});
+
+
+
+			// /srv/autometal/operators/zookeeper/jdk-12/bin
+
 
 	}
 
