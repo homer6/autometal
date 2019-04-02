@@ -6,6 +6,8 @@ using autometal::platforms::Platform;
 #include "autometal/platforms/Platform.h"
 using autometal::platforms::FilePath;
 
+#include <string>
+using std::string;
 
 namespace autometal{
 namespace operators{
@@ -27,6 +29,7 @@ namespace operators{
 			virtual bool isRunnable(){ return false; }
 
 			virtual FilePath getOperatorFilePath() = 0;
+			virtual string getOperatorVersion() = 0;
 
 		protected:
 			Platform* platform = nullptr;

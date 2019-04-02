@@ -34,6 +34,12 @@ namespace operators{
 
 	}
 
+	string KubernetesOperator::getOperatorVersion(){
+
+		return "01_14_00";
+
+	}
+
 	void KubernetesOperator::installPreflight(){}
 	void KubernetesOperator::install(){
 		cout << "Installing Kubernetes" << endl;

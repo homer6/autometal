@@ -34,8 +34,9 @@ namespace operators{
 
 
 			FilePath getOperatorFilePath();
+			string getOperatorVersion();
 
-			string kubernetes_version = "1.14.0";
+			string kubernetes_version = "01_14_00";
 
 
 	};
