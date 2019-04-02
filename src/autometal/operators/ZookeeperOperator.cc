@@ -29,17 +29,49 @@ namespace operators{
 
 	string ZookeeperOperator::getOperatorVersion(){
 
-		return "01_14_00";
+		return "03_04_14";
 
 	}
 
 	void ZookeeperOperator::installPreflight(){}
+
+
 	void ZookeeperOperator::install(){
+
 		cout << "Installing Zookeeper" << endl;
+
+		FilePath operator_filepath = this->getOperatorFilePath();
+
+		this->getPlatform()->executeCommand({
+			{ "mkdir" },
+			{ "-p", this->getPlatform()->renderFilePath(operator_filepath) }
+		});
+
+
+
+		FilePath download_filepath = operator_filepath;
+		download_filepath.append( "zookeeper-3.4.14.tar.gz" );
+
+
+		this->getPlatform()->downloadFile(
+			{ "www-us.apache.org", "/dist/zookeeper/zookeeper-3.4.14/zookeeper-3.4.14.tar.gz" },
+			download_filepath
+		);
+
+		CommandResult result = this->getPlatform()->executeCommand({
+			{ "tar" },
+			{ "-C", this->getPlatform()->renderFilePath(operator_filepath), "-xvzf", this->getPlatform()->renderFilePath(download_filepath) }
+		});
+
 	}
+
+
 	void ZookeeperOperator::uninstall(){
 		cout << "Uninstalling Zookeeper" << endl;
 	}
+
+
+
 	void ZookeeperOperator::assertInstalled(){}
 	void ZookeeperOperator::assertUninstalled(){}
 
@@ -52,65 +84,6 @@ namespace operators{
 	void ZookeeperOperator::stop(){}
 
 
-
-/*
-
-	void ZookeeperOperator::run(){
-
-		this->installPreflight();
-		
-		this->install();
-
-	}
-	
-
-	void ZookeeperOperator::installPreflight(){
-
-		unique_ptr<Platform> platform( Platform::createPlatform() );
-
-		platform->installDependencies();
-
-		CommandResult result = platform->executeCommand({
-			{ "ls" }
-		});
-
-		cout << "command stdout: " << result.stdout_output << endl;
-
-	}
-	
-
-	void ZookeeperOperator::install(){
-
-		unique_ptr<Platform> platform( Platform::createPlatform() );
-
-		FilePath operator_filepath = this->getOperatorFilePath();
-
-		platform->executeCommand({
-			{ "mkdir" },
-			{ "-p", platform->renderFilePath(operator_filepath) }
-		});
-
-		platform->downloadExecutableFile(
-			{ "pkg.cfssl.org", "/R1.2/cfssl_linux-amd64" },
-			{ { "usr", "local", "bin", "cfssl" }, false }
-		);
-
-		platform->downloadExecutableFile(
-			{ "pkg.cfssl.org", "/R1.2/cfssljson_linux-amd64" },
-			{ { "usr", "local", "bin", "cfssljson" }, false }
-		);
-
-		platform->downloadExecutableFile(
-			{ "storage.googleapis.com", "/kubernetes-release/release/v" + this->kubernetes_version + "/bin/linux/amd64/kubectl" },
-			{ { "usr", "local", "bin", "kubectl" }, false }
-		);
-
-		//cout << "download stdout: " << result.stdout_output << endl;
-
-	}
-	
-*/
-	
 
 
 }

@@ -23,6 +23,11 @@ namespace platforms {
 		string drive_letter;
 		
 		string createPathString( const string separator ) const;
+
+		void append( const string path_part ){
+			this->path_parts.push_back( path_part );
+		};
+
 	};
 
 	struct HttpPath{
