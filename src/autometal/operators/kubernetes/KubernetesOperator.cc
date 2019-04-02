@@ -32,9 +32,29 @@ namespace operators{
 			{ "srv", "autometal", "operators", "kubernetes" }, false
 		};
 
-	};
+	}
+
+	void KubernetesOperator::installPreflight(){}
+	void KubernetesOperator::install(){
+		cout << "Installing Kubernetes" << endl;
+	}
+	void KubernetesOperator::uninstall(){
+		cout << "Uninstalling Kubernetes" << endl;
+	}
+	void KubernetesOperator::assertInstalled(){}
+	void KubernetesOperator::assertUninstalled(){}
 
 
+	void KubernetesOperator::installService(){}
+	void KubernetesOperator::uninstallService(){}
+	void KubernetesOperator::assertRunning(){}
+	void KubernetesOperator::assertStopped(){}
+	void KubernetesOperator::run(){}
+	void KubernetesOperator::stop(){}
+
+
+
+/*
 
 	void KubernetesOperator::run(){
 
@@ -90,12 +110,7 @@ namespace operators{
 
 	}
 	
-
-	void KubernetesOperator::remove(){
-
-
-
-	}
+*/
 	
 
 
