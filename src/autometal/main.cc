@@ -61,13 +61,45 @@ int main (int argc, char **argv) {
         size_t found = operators.find("kubernetes");
         if( found != std::string::npos ){
 
-            KubernetesOperator k8s_operator;
+            KubernetesOperator kubernetes_operator;
 
             if( command == "install" ){
-                k8s_operator.install();
+                kubernetes_operator.install();
             }
             if( command == "uninstall" ){
-                k8s_operator.uninstall();
+                kubernetes_operator.uninstall();
+            }
+
+        }
+
+
+        found = operators.find("kafka");
+        if( found != std::string::npos ){
+
+            KafkaOperator kafka_operator;
+
+            if( command == "install" ){
+                kafka_operator.install();
+            }
+            if( command == "uninstall" ){
+                kafka_operator.uninstall();
+            }
+
+        }
+
+
+        
+
+        found = operators.find("zookeeper");
+        if( found != std::string::npos ){
+
+            ZookeeperOperator zookeeper_operator;
+
+            if( command == "install" ){
+                zookeeper_operator.install();
+            }
+            if( command == "uninstall" ){
+                zookeeper_operator.uninstall();
             }
 
         }
